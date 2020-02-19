@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Imagination</title>
+    <link href="https://fonts.googleapis.com/css?family=Karla:400,400i,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+    <script src="static/lib/p5.min.js"></script>
+    <script src="static/lib/p5.dom.min.js"></script>
+    <script src="static/sketch.js"></script>
+
+</head>
+<body>
+    <div class="grid">
+        <div id="map">
+            <div id="pano">
+                <svg xmlns="http://www.w3.org/2000/svg" id="draw-mode" viewBox="0 0 36 36">
+                    <title>draw-mode</title>
+                    <path d="M33,24.81V9a6,6,0,0,0-6-6H11.19A6,6,0,1,0,3,11.19V28a6,6,0,0,0,6,6H25.54A6,6,0,1,0,33,24.81ZM9,11.19A6.05,6.05,0,0,0,11.19,9H27V24.81A6,6,0,0,0,24.35,28H9Z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" id="nav-mode" viewBox="0 0 36 36">
+                    <title>nav-mode</title>
+                    <path d="M28.78,13.42A10.39,10.39,0,1,0,9.63,19h0l7.65,13.37a1.3,1.3,0,0,0,2.25,0L27.16,19h0A10.31,10.31,0,0,0,28.78,13.42Zm-10.39,5a5,5,0,1,1,5-5A5,5,0,0,1,18.39,18.42Z"/></svg>
+                <span id="submit">ADD DATA</span>
+                <div id="placeholder"></div>
+            </div>
+        </div>
+        <div id="dreams">
+            <header>
+                <span>Select Machine </span>
+                <select id="ideas">
+                     <option value="none" selected disabled hidden>Choose</option>
+                </select>
+            </header>
+            <div class="content">
+                <div class="loading">
+                    <div class="bounce"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
+                <div class="machine_results">
+                    <!-- <p>Here's a text machine hallucination that is being written out long form</p> -->
+                </div>
+            </div>
+            <footer>Source Information</footer>
+        </div>
+        <div id="data">
+            <div class="headerbar">
+                <h1>Imagined Data</h1>
+                <span id="todatabase">Send to Database</span>
+            </div>
+            <div class="datagrid">
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz-wPsGB_lG2dyNjUmHnR97jzA4QCZeF4&callback=initialize"></script>
+</html>

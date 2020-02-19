@@ -1,0 +1,316 @@
+html,body{
+    margin:0;
+    padding:0;
+    height:100%;
+    background-color:white;
+    font-family: 'Karla';
+}
+
+
+.grid{
+    display:grid;
+    height: 100%;
+    grid-template-columns: minmax(600px,5fr) minmax(600px,5fr);
+    grid-template-rows: 100% auto;
+    grid-template-areas:
+    "pano dreams"
+    "data data";
+}
+
+#map{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 600px;
+    background-color:white;
+    grid-area:pano;
+}
+
+#pano{
+    place-self: center;
+    width:47vw;
+    height:47vw;
+    min-width: 600px;
+    min-height: 600px;
+    position:relative;
+    overflow:hidden;
+    touch-action:none;
+}
+
+
+#dreams{
+    grid-area:dreams;
+    background-color: #F3F3F3;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* background-color:blue; */
+}
+
+#data{
+    grid-area:data;
+    background-color:#212121;
+    /* border-top:1px solid gray; */
+
+
+}
+
+.datagrid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    grid-gap: 20px 20px;
+    align-items:center;
+    padding:0px 40px 40px 40px;
+
+}
+
+.datagrid > div{
+    /* width:400px;
+    height:400px; */
+    display:block;
+}
+
+.datagrid  > div img{
+    width:100%;
+    filter:grayscale(1);
+}
+
+.datagrid  > div img:hover{
+    filter:grayscale(0);
+}
+
+.datagrid > div > .imgbox{
+    position:relative;
+}
+
+.datagrid  > div > .imgbox > div{
+    position:absolute;
+    top:0;
+    left:0;
+    height:20%;
+    width:50%;
+    border:2px solid #00FF00;
+    pointer-events: none;
+}
+
+.datagrid > div > p {
+    color: white;
+    margin:0;
+    font-size:14px;
+    height:20px;
+    overflow-y:scroll;
+    cursor: ns-resize;
+}
+
+.datagrid > div > p::-webkit-scrollbar{
+    display:none;
+}
+
+.headerbar{
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    padding:0px 40px;
+    align-items:center;
+}
+
+
+.headerbar > span{
+    height: 20px;
+    margin:10px;
+    padding:8px 25px;
+    letter-spacing:1px;
+    border-radius: 2px;
+    font-weight:normal;
+    background-color:blue;
+    color:white;
+    cursor:pointer;
+    transition: transform 0.1s ease;
+}
+
+.headerbar > span:hover{
+    transform: scale(1.05);
+}
+
+canvas{
+    width:100% !important;
+    height:100% !important;
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:100;
+    pointer-events:none;
+    touch-action:none;
+
+}
+
+.draw{
+    border:3px solid #00FF00;
+}
+
+.draw canvas{
+    pointer-events: auto !important;
+}
+
+.category[type=text]{
+    z-index:100;
+    position:absolute;
+    height:16px;
+    background:'rgba(0,0,0,0.5)';
+    border:none;
+    color:black;
+    font-weight:bold;
+    min-width:50px;
+    font-size:12px;
+    font-family:'Karla';
+    padding:1px 4px;
+    border:1px solid white;
+}
+
+.category:hover{
+    color:blue;
+    border:1px solid blue;
+    transition: all 0.2s ease;
+
+}
+
+.category:focus{
+    outline:none;
+    color:blue;
+    border:1px solid blue;
+
+}
+
+.category::placeholder{
+    font-weight:normal;
+}
+
+#dreams header{
+    text-align:center;
+    margin-top:2.5%;
+}
+
+#dreams > header > select{
+    margin-left:4px;
+    font-size: 16px;
+    font-family:'Karla';
+}
+
+#dreams footer{
+    margin-bottom:2.5%;
+    text-align:center;
+    font-size:14px;
+    color:gray;
+}
+
+#dreams .content{
+    place-self: center;
+    font-family:'Karla';
+    width:75%;
+    font-size:24px;
+    text-align:center;
+}
+#dreams .content > img {
+    width:100%;
+    opacity:1;
+    -webkit-transition: opacity .25s ease-in-out;
+    -o-transition: opacity .25s ease-in-out;
+    transition: opacity .25s ease-in-out;
+}
+
+
+/* For Testing Purposes */
+#placeholder{
+    position:absolute;
+    z-index: 1;
+    height:100%;
+    width:100%;
+    background-color:#F3F3F3;
+}
+
+/* Loading Animation */
+.loading > div{
+    width:0.75rem;
+    height:0.75rem;
+    background-color:blue;
+    border-radius: 50%;
+    display:inline-block;
+    opacity: 0.75;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    animation: 1.25s bounce infinite ease-in-out both;
+}
+
+.loading.hidden > div{
+    opacity:0;
+}
+
+.loading .bounce{
+    animation-delay: -0.30s;
+}
+
+.loading .bounce2{
+    animation-delay: -0.15s;
+}
+
+@keyframes bounce {
+    0%,80%,100%{
+        transform: scale(0);
+    }
+    30%{
+        transform: scale(1);
+    }
+}
+
+/* UI Buttons */
+#pano > svg{
+    width:36px;
+    height:36px;
+    padding:10px;
+    position: absolute;
+    z-index:1000;
+    opacity:0.4;
+    fill:white;
+    cursor:pointer;
+}
+
+#pano > svg:hover{
+    transform:scale(1.2);
+}
+
+#draw-mode{
+    top:0;
+    left:0;
+}
+
+#nav-mode{
+    top:0;
+    left:46px;
+}
+
+#pano > svg.active{
+    opacity:1;
+}
+
+#pano > #submit{
+    background-color:white;
+    position:absolute;
+    z-index:1000;
+    right:0;
+    top:0;
+    margin:10px;
+    padding:8px 25px;
+    letter-spacing:1px;
+    border-radius: 2px;
+    font-weight:normal;
+    background-color:blue;
+    color:white;
+    cursor:pointer;
+    transition: transform 0.1s ease;
+}
+
+#pano > #submit:hover{
+    transform: scale(1.05);
+
+}
