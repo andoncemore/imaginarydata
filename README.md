@@ -4,7 +4,7 @@ This is a small frontend app that uses the google static streetview api and the 
 
 The flask backend lets the frontend app send data to the server for storage, and can be used to print the collected images into large reciept-printed panoramas (if a ESC-POS reciept printer is connected over USB)
 
-Uses:
+### External Libraries:
 * Google Street View API
 * Google Maps Javascript API
 * p5.js
